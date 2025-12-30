@@ -43,6 +43,9 @@ public class Update implements Serializable {
     @JsonProperty("inline_query")
     private IncomingInlineQuery inlineQuery;
 
+    @JsonProperty("pre_checkout_query")
+    private PreCheckoutQuery preCheckoutQuery;
+
     public Update() {
     }
 
@@ -86,6 +89,14 @@ public class Update implements Serializable {
         this.inlineQuery = incomingInlineQuery;
     }
 
+    public PreCheckoutQuery getPreCheckoutQuery() {
+        return preCheckoutQuery;
+    }
+
+    public void setPreCheckoutQuery(PreCheckoutQuery preCheckoutQuery) {
+        this.preCheckoutQuery = preCheckoutQuery;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Update{");
@@ -94,6 +105,7 @@ public class Update implements Serializable {
         sb.append(", channel_post=").append(channelpost);
         sb.append(", callbackQuery=").append(callbackQuery);
         sb.append(", inlineQuery=").append(inlineQuery);
+        sb.append(", preCheckoutQuery=").append(preCheckoutQuery);
         sb.append('}');
         return sb.toString();
     }

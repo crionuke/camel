@@ -32,6 +32,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.RuntimeCamelException;
 import org.apache.camel.component.telegram.TelegramException;
 import org.apache.camel.component.telegram.TelegramService;
+import org.apache.camel.component.telegram.model.AnswerPreCheckoutQueryMessage;
 import org.apache.camel.component.telegram.model.EditMessageCaptionMessage;
 import org.apache.camel.component.telegram.model.EditMessageDelete;
 import org.apache.camel.component.telegram.model.EditMessageLiveLocationMessage;
@@ -52,6 +53,7 @@ import org.apache.camel.component.telegram.model.OutgoingSetGameScoreMessage;
 import org.apache.camel.component.telegram.model.OutgoingStickerMessage;
 import org.apache.camel.component.telegram.model.OutgoingTextMessage;
 import org.apache.camel.component.telegram.model.OutgoingVideoMessage;
+import org.apache.camel.component.telegram.model.SendInvoiceMessage;
 import org.apache.camel.component.telegram.model.SendLocationMessage;
 import org.apache.camel.component.telegram.model.SendVenueMessage;
 import org.apache.camel.component.telegram.model.StopMessageLiveLocationMessage;
@@ -118,6 +120,12 @@ public class TelegramServiceRestBotAPIAdapter implements TelegramService {
         m.put(OutgoingAnswerInlineQuery.class, new OutgoingPlainMessageHandler(
                 client,
                 mapper, baseUri + "/answerInlineQuery", bufferSize));
+        m.put(SendInvoiceMessage.class, new OutgoingPlainMessageHandler(
+                client,
+                mapper, baseUri + "/sendInvoice", bufferSize));
+        m.put(AnswerPreCheckoutQueryMessage.class, new OutgoingPlainMessageHandler(
+                client,
+                mapper, baseUri + "/answerPreCheckoutQuery", bufferSize));
         this.handlers = m;
     }
 

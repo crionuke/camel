@@ -74,6 +74,9 @@ public class IncomingMessage implements Serializable {
 
     private IncomingVoice voice;
 
+    @JsonProperty("successful_payment")
+    private SuccessfulPayment successfulPayment;
+
     public IncomingMessage() {
     }
 
@@ -213,6 +216,14 @@ public class IncomingMessage implements Serializable {
         this.voice = voice;
     }
 
+    public SuccessfulPayment getSuccessfulPayment() {
+        return successfulPayment;
+    }
+
+    public void setSuccessfulPayment(SuccessfulPayment successfulPayment) {
+        this.successfulPayment = successfulPayment;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("IncomingMessage{");
@@ -233,6 +244,7 @@ public class IncomingMessage implements Serializable {
         sb.append(", replyMarkup=").append(replyMarkup);
         sb.append(", game=").append(game);
         sb.append(", voice=").append(voice);
+        sb.append(", successfulPayment=").append(successfulPayment);
         sb.append('}');
         return sb.toString();
     }
